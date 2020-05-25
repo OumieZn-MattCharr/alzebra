@@ -180,13 +180,3 @@ def get_serie (results):
         serie = {'date' : date, 'data' : parameters}
         if parameters != None: series.append (serie)
     return series, date
-
-def main ():
-    tickers = ['^FCHI', '^DJI']
-    data = HistoricalData (tickers=tickers, start_date='23 may 2018', end_date='23 may 2019', frequency='1wk')
-    data.download ()
-    data.candlesticks (tickers='all')
-    data.plot (tickers='all', kind='close')
-    #data.clear ()
-
-main ()
