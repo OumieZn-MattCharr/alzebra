@@ -101,7 +101,7 @@ class HistoricalData:
                         dates.append (date)
                         values.append (value)
                     plt.plot (dates, values, color='black')
-                    plt.axhline (0, color='grey', linestyle="--")
+                    if kind == 'var': plt.axhline (0, color='grey', linestyle="--")
                     plt.show ()
                         
 #toolkit:
@@ -186,7 +186,7 @@ def main ():
     data = HistoricalData (tickers=tickers, start_date='23 may 2018', end_date='23 may 2019', frequency='1wk')
     data.download ()
     data.candlesticks (tickers='all')
-    data.plot (tickers='all', kind='var')
-    data.clear ()
+    data.plot (tickers='all', kind='close')
+    #data.clear ()
 
 main ()
