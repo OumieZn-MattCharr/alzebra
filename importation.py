@@ -76,7 +76,9 @@ class HistoricalData:
                         begin, high, low, end, _, _ = data.values ()
                         plt.scatter (date, begin, marker='.', color='black')
                         plt.scatter (date, end, marker='.', color='black')
-                        plt.plot ([date, date], [low, high], color='green' if begin < end else 'red')
+                        try:
+                            plt.plot ([date, date], [low, high], color='green' if begin < end else 'red')
+                        except TypeError: pass
                 plt.show ()
 
         def plot (self, tickers='all', kind='close'):
@@ -159,6 +161,7 @@ def get_index (data, index):
 def get_var (price1, price2):
     try: return 100 * (price2 / price1 - 1)
     except ZeroDivisionError: return None
+    except TypeError: return None
 
 def get_parameters (date, data, close0):
     open = get_index (data, 1)
