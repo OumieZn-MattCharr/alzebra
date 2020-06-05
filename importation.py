@@ -36,7 +36,7 @@ class HistoricalData:
     #public:
 
         TODAY = datetime.datetime.today ().strftime (DEFAULT_FORMAT)
-        DEFAULT_START_DATE = (datetime.datetime.today () - datetime.timedelta (days=360)).strftime (DEFAULT_FORMAT)
+        DEFAULT_START_DATE = (datetime.datetime.today () - datetime.timedelta (days=252)).strftime (DEFAULT_FORMAT)
         
         def __init__ (self, tickers=['^FCHI'], start_date=DEFAULT_START_DATE, end_date=TODAY, frequency='1d'):
             '''
