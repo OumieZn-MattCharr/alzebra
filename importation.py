@@ -49,10 +49,17 @@ class HistoricalData:
             self.end_date = end_date
 
         def download (self):
+            print ("==> Downloading historical data")
             for ticker in self.tickers:
-                historical_data_ticker = extract_data (ticker, self.start_date, self.end_date, self.frequency)
-                file_name = get_file_name (ticker, self.start_date, self.end_date, self.frequency)
-                with open (file=file_name, mode='w') as file: json.dump (historical_data_ticker, file)
+                print ("==> Downloading historical data for ", ticker)
+                try:
+                    historical_data_ticker = extract_data (ticker, self.start_date, self.end_date, self.frequency)
+                    file_name = get_file_name (ticker, self.start_date, self.end_date, self.frequency)
+                    with open (file=file_name, mode='w') as file: json.dump (historical_data_ticker, file)
+                    print ("==> Historical data for ", ticker, "was succesfully imported")
+                except:
+                    print ("==> Importation error for ", ticker)
+            return self
 
         def clear (self):
             os.system ('cd data && rm -rf *')
