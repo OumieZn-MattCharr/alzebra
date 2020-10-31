@@ -7,14 +7,14 @@ or for any purpose without the express permission of Oumayma Zinoun and Matthieu
 # !/usr/bin/env/ python3
 # coding: utf-8
 
-import importation
+from importation import HistoricalData
 
 def main ():
-    tickers = ['^FCHI', '^DJI']
-    data = importation.HistoricalData (tickers=tickers, frequency='1wk')
+    tickers = ['^FCHI']
+    data = HistoricalData (tickers=tickers, frequency='1wk')
     data.download ()
     data.candlesticks (tickers='all')
     data.plot (tickers='all', kind='close')
-    data.clear ()
+    #data.clear ()
 
 main ()
